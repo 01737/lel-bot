@@ -15,13 +15,11 @@ class HelloWorld():
             return resposta.status_code
     
     def print_hello(self, lang):
-        choice = lang
-
-        response = self.make_request(f'https://api.github.com/search/code?q=repo:leachim6/hello-world+filename:{choice}')
+        response = self.make_request(f'https://api.github.com/search/code?q=repo:leachim6/hello-world+filename:{lang}')
 
         if type(response) is not int:
             for i in range(len(response["items"])):
-                if choice in response["items"][i]["name"]:
+                if lang in response["items"][i]["name"]:
                     file = self.make_request(response["items"][i]["url"])
                     fileName = file["name"]
                     contents = file["content"]

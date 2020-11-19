@@ -1,6 +1,5 @@
-import discord
+import discord, os
 from discord.ext import commands
-from google_speech import Speech
 from audio import *
 from text import *
 
@@ -35,9 +34,6 @@ bot.add_cog(main(bot))
 bot.add_cog(text(bot))
 bot.add_cog(audio(bot))
 
-token = ""
-
-with open("token.txt", "r") as f:
-    token = f.readline()
+token = os.getenv('DISCTOKEN')
 
 bot.run(token)

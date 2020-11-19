@@ -1,5 +1,7 @@
 import random
+import discord
 from discord.ext import commands
+from getHello import *
 
 class text(commands.Cog):
     def __init__(self, bot):
@@ -35,13 +37,19 @@ class text(commands.Cog):
         await ctx.send("Joguei **" + choice + "**\n" + a)
 
     @commands.command(usage="", description="Recebe um biscoito da melhor personagem.")
-    async def biscoito(self,ctx):
+    async def biscoito(self, ctx):
         await ctx.trigger_typing()
 
         await ctx.send("Para " + ctx.author.mention,file=discord.File("naoto.jpg"))
 
-    @commands.command(usage="linguagem", description="Escreve Hello World em qualquer")
-    async def biscoito(self,ctx):
+    @commands.command(usage="linguagem", description="Escreve um programa Hello World em qualquer linguagem (pelo menos os que estão no repo https://github.com/leachim6/hello-world)")
+    async def hello(self, ctx, lang):
         await ctx.trigger_typing()
 
-        await ctx.send("Para " + ctx.author.mention,file=discord.File("naoto.jpg"))
+        helloReq = HelloWorld()
+        helloText = helloReq.print_hello(lang)
+
+        embed = discord.Embed(title=f"Hello World em {lang}", color=0x9200d6)
+        embed.add_field(name=helloText[1], value=f"```{helloText[0]}```")
+
+        await ctx.send(embed=embed)

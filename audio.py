@@ -1,4 +1,7 @@
+import os
+import discord
 from discord.ext import commands
+from google_speech import Speech
 
 class audio(commands.Cog):
     def __init__(self, bot):
@@ -16,10 +19,7 @@ class audio(commands.Cog):
     @commands.command(usage="texto", description="Tocar audio.")
     async def play(self, ctx, *arg):
         if ctx.author.voice.channel and ctx.author.voice.channel == ctx.voice_client.channel:
-            ffmpegExecutable = ""
-
-            with open("ffmpeg.txt", "r") as f:
-                ffmpegExecutable = f.readline()
+            ffmpegExecutable = os.getenv("ffmpeg")
 
             text = " ".join(arg[:])
             lang = "pt"

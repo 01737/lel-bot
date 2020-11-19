@@ -1,2 +1,2 @@
 # lel-bot
- A discord bot made for learning purposes
+ A personal discord bot made for learning purposes

@@ -25,6 +25,5 @@ class HelloWorld():
                     contents = file["content"]
 
                     return [base64.b64decode(contents).decode(), fileName]
-                    break
         else:
             return str(response)

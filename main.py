@@ -16,15 +16,15 @@ class main(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command(self, ctx):
-        a = ("-"*110 + "\nUsuário: " + ctx.message.author.name + "#" + str(ctx.message.author.discriminator) + " (id=" + str(ctx.message.author.id) + ")" + "\n" 
+        logText = ("-"*110 + "\nUsuário: " + ctx.message.author.name + "#" + str(ctx.message.author.discriminator) + " (id=" + str(ctx.message.author.id) + ")" + "\n" 
             + "Server: " + str(ctx.message.guild) + "\n" 
             + "Canal: " + str(ctx.message.channel) + "\n"
             + "Comando: " + ctx.message.content + "\n")
         
-        print(a)
+        print(logText)
 
         with open("LOG.txt","a",encoding="utf8") as log:
-            log.write(a)
+            log.write(logText)
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
